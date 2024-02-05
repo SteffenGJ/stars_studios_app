@@ -14,18 +14,24 @@ class HomeScreen extends StatelessWidget {
       ),
       body: const Padding(
         padding: EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            SizedBox(height: 25,),
-            TemporaryPlaceholderWidget(),
-            SizedBox(height: 15,),
-            TemporaryMultiPlaceholderWidget(),
-            TemporaryPlaceholderWidget()
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(
+                height: 25,
+              ),
+              TemporaryPlaceholderWidget(),
+              SizedBox(
+                height: 15,
+              ),
+              TemporaryMultiPlaceholderWidget(),
+              TemporaryPlaceholderWidget()
+            ],
+          ),
         ),
       ),
       drawer: const AppDrawer(),
-      );
+    );
   }
 }
 
@@ -36,47 +42,40 @@ class TemporaryMultiPlaceholderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Expanded(
-          child: Card(
-            color: const Color.fromARGB(255, 245, 244, 244), 
-            child: SizedBox(
-              height: 200, 
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 30.0),
-                child: Container(
-                  color: Colors.grey[300], 
-                  child: const Center(
-                    child: Text("....")
-                  ),
-                ),
+    return Row(children: [
+      Expanded(
+        child: Card(
+          color: const Color.fromARGB(255, 245, 244, 244),
+          child: SizedBox(
+            height: 200,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 30.0),
+              child: Container(
+                color: Colors.grey[300],
+                child: const Center(child: Text("....")),
               ),
             ),
           ),
         ),
-        Expanded(
-          child: Card(
-            color: const Color.fromARGB(255, 245, 244, 244), 
-            child: SizedBox(
-              height: 200, 
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 30.0),
-                child: Container(
-                  color: Colors.grey[300], 
-                  child: const Center(
-                    child: Text("....")
-                  ),
-                ),
+      ),
+      Expanded(
+        child: Card(
+          color: const Color.fromARGB(255, 245, 244, 244),
+          child: SizedBox(
+            height: 200,
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 30.0),
+              child: Container(
+                color: Colors.grey[300],
+                child: const Center(child: Text("....")),
               ),
             ),
           ),
         ),
-      ]
-    );
+      ),
+    ]);
   }
 }
-
 
 class TemporaryPlaceholderWidget extends StatelessWidget {
   const TemporaryPlaceholderWidget({
@@ -89,16 +88,14 @@ class TemporaryPlaceholderWidget extends StatelessWidget {
       children: [
         Expanded(
           child: Card(
-            color: const Color.fromARGB(255, 245, 244, 244), 
+            color: const Color.fromARGB(255, 245, 244, 244),
             child: SizedBox(
-              height: 200, 
+              height: 200,
               child: Padding(
                 padding: const EdgeInsets.fromLTRB(8.0, 8.0, 8.0, 30.0),
                 child: Container(
-                  color: Colors.grey[300], 
-                  child: const Center(
-                    child: Text("....")
-                  ),
+                  color: Colors.grey[300],
+                  child: const Center(child: Text("....")),
                 ),
               ),
             ),

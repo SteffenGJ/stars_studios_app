@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:get/route_manager.dart';
+import 'package:stars_studios/screens/login_screen.dart';
+import 'package:stars_studios/shared/shared_prefs_manager.dart';
 
 class LogOutDialog extends StatelessWidget {
   const LogOutDialog({
     super.key,
   });
+
+  void _logOut(context) async {
+    final sharedPrefsManager = setupSharedPrefsManager(context);
+    await sharedPrefsManager.removeUserId();
+    Get.offAll(() => const LoginScreen());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -12,15 +21,12 @@ class LogOutDialog extends StatelessWidget {
       content: const Text("Are you sure you want to log out?"),
       actions: [
         TextButton(
-          onPressed: () {
-            Navigator.pop(context);
-          }, 
-          child: const Text("Cancel")
-        ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text("Cancel")),
         TextButton(
-          onPressed: () {
-            Navigator.pop(context); 
-          }, 
+          onPressed: () => _logOut(context),
           child: const Text("Log out"),
         ),
       ],

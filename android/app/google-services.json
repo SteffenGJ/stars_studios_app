@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "218480917129",
+    "project_id": "stars-studios-caafe",
+    "storage_bucket": "stars-studios-caafe.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:218480917129:android:1f085c451cf1608ff2e458",
+        "android_client_info": {
+          "package_name": "com.example.stars_studios"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbrl8cy_LwLsI6OGncYYpCdf3uRy3YDTM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
