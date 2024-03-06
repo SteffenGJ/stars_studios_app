@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stars_studios/screens/home_screen.dart';
-import 'package:stars_studios/screens/login_screen.dart';
+import 'package:stars_studios/screens/authentication/login_screen.dart';
 import 'package:stars_studios/shared/shared_prefs_manager.dart';
 
 class StartScreen extends StatelessWidget {
@@ -15,7 +15,7 @@ class StartScreen extends StatelessWidget {
   }
 
   Widget _determineReturnWidget(context) {
-    final sharedPrefsManager = setupSharedPrefsManager(context);
+    final sharedPrefsManager = SharedPrefsManager.of(context);
     return _hasUserLoggedIn(sharedPrefsManager.isUserLoggedIn());
   }
 

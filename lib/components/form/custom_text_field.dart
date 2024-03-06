@@ -8,6 +8,8 @@ class CustomTextField extends StatelessWidget {
   final bool? enabled;
   final Function? onTap;
   final bool readOnly;
+  final bool required;
+  final bool emailField;
 
   const CustomTextField({
     super.key,
@@ -16,6 +18,8 @@ class CustomTextField extends StatelessWidget {
     this.enabled,
     this.onTap,
     this.readOnly = false,
+    this.required = false,
+    this.emailField = false,
   });
 
   @override
@@ -30,6 +34,18 @@ class CustomTextField extends StatelessWidget {
       enabled: enabled,
       readOnly: readOnly,
       onTap: onTap as void Function()?,
+      validator: (value) {
+        if (required && (value == null || value.isEmpty)) {
+          return "Please enter a value";
+        }
+        if (emailField &&
+            value != null &&
+            !RegExp(r'^[\w-]+(\.[\w-]+)*@[a-zA-Z\d-]+(\.[a-zA-Z\d-]+)*\.[a-zA-Z\d-]{2,4}$')
+                .hasMatch(value)) {
+          return "Please enter a valid email";
+        }
+        return null;
+      },
     );
   }
 }

@@ -4,13 +4,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 ///A class for interacting with shared preferences
 
-class SharedPrefsManager {
+class SharedPrefsManager extends ChangeNotifier {
   final SharedPreferences prefs;
 
   SharedPrefsManager({required this.prefs});
 
   Future<void> setUserId(String userId) async {
     await prefs.setString("userId", userId);
+    notifyListeners();
   }
 
   String? getUserId() {
@@ -19,15 +20,14 @@ class SharedPrefsManager {
 
   Future<void> removeUserId() async {
     await prefs.remove("userId");
+    notifyListeners();
   }
 
   bool isUserLoggedIn() {
     return getUserId() != null;
   }
-}
 
-///A helper to set up SharedPrefsManager
-SharedPrefsManager setupSharedPrefsManager(BuildContext context) {
-  final prefs = context.read<SharedPreferences>();
-  return SharedPrefsManager(prefs: prefs);
+  static SharedPrefsManager of(BuildContext context) {
+    return context.read<SharedPrefsManager>();
+  }
 }

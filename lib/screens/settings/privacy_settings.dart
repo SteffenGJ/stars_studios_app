@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:stars_studios/components/settings/switch_consent.dart';
 
+//TODO: Implement this screen
+
 class PrivacySettings extends StatelessWidget {
   const PrivacySettings({super.key});
 
@@ -13,14 +15,17 @@ class PrivacySettings extends StatelessWidget {
       body: const SafeArea(
         child: Column(
           children: [
-            SwitchConsent(canToggle: false, text: "I allow something to gather some information according to Stars Studios privacy policy"),
-            SwitchConsent(canToggle: true, text: "I allow something to gather some information according to Stars Studios privacy policy"),
+            SwitchConsent(
+                canToggle: false,
+                text:
+                    "I allow something to gather some information according to Stars Studios privacy policy"),
+            SwitchConsent(
+                canToggle: true,
+                text:
+                    "I allow something to gather some information according to Stars Studios privacy policy"),
           ],
         ),
       ),
     );
   }
 }
-
-
-

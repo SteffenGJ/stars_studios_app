@@ -1,3 +1,4 @@
+import 'package:stars_studios/controllers/user_controller.dart';
 import 'package:stars_studios/models/authentication_response.dart';
 import 'package:stars_studios/shared/firebase_authentication.dart';
 import 'package:test/test.dart';
@@ -7,11 +8,16 @@ import 'mocks/mocks.dart';
 void main() {
   late FirebaseAuthentication authenticator;
   late MockFirebaseAuth mockFirebaseAuth;
+  late MockUserRepository mockUserRepository;
   final credentials = {"email": "test@email.com", "password": "test"};
 
   setUp(() async {
     mockFirebaseAuth = MockFirebaseAuth();
-    authenticator = FirebaseAuthentication(instance: mockFirebaseAuth);
+    mockUserRepository = MockUserRepository();
+    authenticator = FirebaseAuthentication(
+      instance: mockFirebaseAuth,
+      userController: UserController(userRepository: mockUserRepository),
+    );
   });
 
   group("Authentication", () {
@@ -31,7 +37,7 @@ void main() {
       final AuthenticationResponse response =
           await authenticator.login(credentials);
 
-      expect(response.errorCode, "wrong-password");
+      expect(response.error!.code, "wrong-password");
     });
 
     test("should sign up user given valid credentials", () async {
@@ -53,7 +59,7 @@ void main() {
       final AuthenticationResponse response =
           await authenticator.createUser(credentials);
 
-      expect(response.errorCode, "email-already-in-use");
+      expect(response.error!.code, "email-already-in-use");
     });
 
     test("should be able to log out a user", () async {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
-import 'package:stars_studios/screens/login_screen.dart';
+import 'package:stars_studios/screens/authentication/login_screen.dart';
 import 'package:stars_studios/shared/shared_prefs_manager.dart';
 
 class LogOutDialog extends StatelessWidget {
@@ -9,7 +9,7 @@ class LogOutDialog extends StatelessWidget {
   });
 
   void _logOut(context) async {
-    final sharedPrefsManager = setupSharedPrefsManager(context);
+    final sharedPrefsManager = SharedPrefsManager.of(context);
     await sharedPrefsManager.removeUserId();
     Get.offAll(() => const LoginScreen());
   }

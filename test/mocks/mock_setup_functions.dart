@@ -65,3 +65,29 @@ Future<SharedPreferences> setUpSharedPrefsWithMockValues(
   SharedPreferences.setMockInitialValues(values);
   return await SharedPreferences.getInstance();
 }
+
+Future<List<Map<String, Object>>> mockFetchVideos() async {
+  return [
+    {
+      "videoId": "1",
+      "title": "title1",
+      "description": "description1",
+      "url": "url1",
+    },
+    {
+      "videoId": "2",
+      "title": "title2",
+      "description": "description2",
+      "url": "url2",
+    },
+  ];
+}
+
+Future<Map<String, Object>> mockFetchVideo(String id) async {
+  return {
+    "videoId": "1",
+    "title": "title1",
+    "description": "description1",
+    "url": "url1",
+  };
+}

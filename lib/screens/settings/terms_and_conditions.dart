@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//TODO: Implement this screen
+
 class TermsAndConditions extends StatelessWidget {
   const TermsAndConditions({super.key});
 

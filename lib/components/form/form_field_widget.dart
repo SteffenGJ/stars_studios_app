@@ -10,6 +10,8 @@ class FormFieldWidget extends StatelessWidget {
   final bool enabled;
   final Function? onTap;
   final bool readOnly;
+  final bool required;
+  final bool emailField;
 
   const FormFieldWidget({
     super.key,
@@ -19,6 +21,8 @@ class FormFieldWidget extends StatelessWidget {
     this.enabled = true,
     this.onTap,
     this.readOnly = false,
+    this.required = false,
+    this.emailField = false,
   });
 
   @override
@@ -35,6 +39,8 @@ class FormFieldWidget extends StatelessWidget {
             enabled: enabled,
             onTap: onTap,
             readOnly: readOnly,
+            required: required,
+            emailField: emailField,
           ),
         ),
       ],
