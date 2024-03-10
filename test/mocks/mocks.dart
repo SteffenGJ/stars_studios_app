@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:mockito/mockito.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:stars_studios/models/user.dart' as user;
+import 'package:stars_studios/repositories/notification_repository.dart';
 import 'package:stars_studios/repositories/user_repository.dart';
 
 class MockFirebaseAuth extends Mock implements FirebaseAuth {
@@ -69,4 +71,35 @@ class MockSharedPreferences extends Mock implements SharedPreferences {
 
   @override
   Future<bool> remove(String key) => Future.value(true);
+}
+
+// class MockNotificationRepository extends Mock implements NotificationRepository {
+//   //Future<List<Map<String, dynamic>>> fetchNotifications(User user) async {
+//   @override
+//   Future<List<Map<String, dynamic>>> fetchNotifications(User user) async {
+//      return Future.value([{"title": "title", }]);
+//   }
+// }
+
+class MockNotificationRepository extends Mock
+    implements NotificationRepository {
+  @override
+  Future<List<Map<String, dynamic>>> fetchNotifications(user.User user) async {
+    final dateOne = DateTime(2024, 3, 6, 7, 58, 0);
+    final dateTwo = DateTime(2024, 3, 6, 7, 59, 0);
+    return Future.value([
+      {
+        "title": "title",
+        "text": "text",
+        "createdAt": Timestamp.fromDate(dateOne),
+        "id": "id"
+      },
+      {
+        "title": "title",
+        "text": "text",
+        "createdAt": Timestamp.fromDate(dateTwo),
+        "id": "id"
+      }
+    ]);
+  }
 }

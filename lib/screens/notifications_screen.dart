@@ -4,17 +4,20 @@ import 'package:stars_studios/controllers/notification_controller.dart';
 import 'package:stars_studios/models/user.dart';
 
 class NotificationsScreen extends StatelessWidget {
-  const NotificationsScreen({super.key});
+  final NotificationController? controller;
+  const NotificationsScreen({super.key, this.controller});
 
   @override
   Widget build(BuildContext context) {
+    final NotificationController notificationController =
+        controller ?? NotificationController();
     return Scaffold(
       appBar: AppBar(
         title: const Text("Notifications"),
       ),
       body: FutureBuilder(
         future:
-            NotificationController().getNotificationsForUser(User.of(context)),
+            notificationController.getNotificationsForUser(User.of(context)),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done &&
               snapshot.hasData) {

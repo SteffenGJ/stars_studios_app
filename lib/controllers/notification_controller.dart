@@ -16,9 +16,6 @@ class NotificationController {
     for (var notification in notifications) {
       newNotifications.add(Notification.fromJson(notification));
     }
-    // final newNotifications =
-    //     notifications.map((e) => Notification.fromJson(e)).toList();
-    print(newNotifications);
     return newNotifications;
   }
 }

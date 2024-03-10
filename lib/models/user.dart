@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:stars_studios/controllers/user_controller.dart';
@@ -114,9 +115,20 @@ class User extends ChangeNotifier {
     //}
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      "userId": userId,
+      "firstName": firstName,
+      "lastName": lastName,
+      "email": email,
+      "readNotifications": readNotifications,
+      "createdAt": Timestamp.fromDate(createdAt!),
+    };
+  }
+
   factory User._fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 
-  Map<String, dynamic> toJson() => _$UserToJson(this);
+  Map<String, dynamic> _toJson() => _$UserToJson(this);
 
   static User of(BuildContext context) {
     return context.watch<User>();
