@@ -47,7 +47,7 @@ class MockUserCredential extends Mock implements UserCredential {
 
 class MockUserModel extends Mock implements user.User {
   @override
-  Future<void> fromId(String id, {String? email}) async => Future.value();
+  Future<void> setFromId(String id, {String? email}) async => Future.value();
 }
 
 class MockUserRepository extends Mock implements UserRepository {

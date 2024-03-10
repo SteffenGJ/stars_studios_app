@@ -19,7 +19,7 @@ Future<void> main() async {
   User user = User();
 
   if (prefs.containsKey("userId")) {
-    await user.fromId(prefs.getString("userId")!);
+    await user.setFromId(prefs.getString("userId")!);
   }
 
   runApp(

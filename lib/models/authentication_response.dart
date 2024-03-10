@@ -27,7 +27,7 @@ class AuthenticationResponse {
 
   void _handleSuccess(SharedPrefsManager sharedPrefsManager, User user) async {
     await sharedPrefsManager.setUserId(data!.userId);
-    await user.fromId(data!.userId, email: data!.email);
+    await user.setFromId(data!.userId, email: data!.email);
     Get.to(() => const HomeScreen());
   }
 }

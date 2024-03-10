@@ -9,12 +9,12 @@ class UserController {
 
   Future<User> getUser(String id) async {
     final json = await _userRepository.fetch(id);
-    return User.fromSomething(json);
+    return User.fromJson(json);
   }
 
   Future<User> updateUser(String id, Map<String, dynamic> userInfo) async {
     await _userRepository.update(id, userInfo);
-    return User.fromSomething(userInfo, controller: this);
+    return User.fromJson(userInfo, controller: this);
   }
 
   Future<void> createUser(String id, Map<String, dynamic> userInfo) async {
